@@ -1,11 +1,6 @@
 {
   "persons": [
     {
-      "name": "Arto Hellas",
-      "number": "777777777",
-      "id": "1"
-    },
-    {
       "name": "Ada Lovelace",
       "number": "39-44-5323523",
       "id": "2"
@@ -22,13 +17,18 @@
     },
     {
       "name": "mariet",
-      "number": "222222222",
+      "number": "121212122",
       "id": "z_TsHflNuU4"
     },
     {
       "name": "Grace",
       "number": "111111111",
       "id": "uMjI9k_Rf6A"
+    },
+    {
+      "name": "Cynthia",
+      "number": "101010101",
+      "id": "Vi8QjBzGraE"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

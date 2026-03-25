@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const baseUrl = 'https://ideal-meme-wrgp9g99pj73wr9-3001.app.github.dev/persons'
+const baseUrl = '/api/persons'
 
 const getAll = () => {
   return axios.get(baseUrl)

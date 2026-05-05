@@ -65,7 +65,7 @@ app.post('/api/persons', (request, response) => {
   response.json(newPerson)
 })
 app.post('/test-post', (req, res) => {
-  console.log("🔥 TEST POST WORKED")
+  console.log(" TEST POST WORKED")
   res.send("POST OK")
 })
 app.listen(PORT, () => {

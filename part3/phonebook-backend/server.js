@@ -1,41 +1,30 @@
 const express = require('express')
-const morgan = require('morgan')
+const cors = require('cors')
+
+console.log("SERVER.JS IS RUNNING")
 
 const app = express()
-morgan.token('body', (req) => JSON.stringify(req.body))
 
-app.use(express.json())
-app.use(
-  morgan(':method :url :status :res[content-length] - :response-time ms :body')
-)
-const PORT = 3002
+app.use(cors())          
+app.use(express.json()) 
 
-let persons = [
-  { id: "1", name: "Arto Hellas", number: "040-123456" },
-  { id: "2", name: "Ada Lovelace", number: "39-44-5323523" }
-]
+const PORT = process.env.PORT || 3002
+
+let persons = []
 
 app.get('/api/persons', (req, res) => {
   res.json(persons)
 })
+app.get('/test', (req, res) => {
+  res.send('TEST WORKS')
+})
+app.post('/api/persons', (req, res) => {
+  const body = req.body
 
-app.post('/api/persons', (request, response) => {
-  const body = request.body
+  console.log("POST RECEIVED:", body)
 
   if (!body.name || !body.number) {
-    return response.status(400).json({
-      error: 'name or number missing'
-    })
-  }
-
-  const nameExists = persons.some(
-    person => person.name === body.name
-  )
-
-  if (nameExists) {
-    return response.status(400).json({
-      error: 'name must be unique'
-    })
+    return res.status(400).json({ error: 'name or number missing' })
   }
 
   const newPerson = {
@@ -46,7 +35,7 @@ app.post('/api/persons', (request, response) => {
 
   persons = persons.concat(newPerson)
 
-  response.json(newPerson)
+  res.json(newPerson)
 })
 
 app.listen(PORT, () => {
